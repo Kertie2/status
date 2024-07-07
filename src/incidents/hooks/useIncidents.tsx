@@ -11,7 +11,7 @@ function useIncidents() {
         const loadData = async () => {
             setIsLoading(true);
             try {
-                const response = await fetch("https://api.github.com/repos/mehatab/fettle/issues?per_page=20&state=all&labels=incident");
+                const response = await fetch("https://api.github.com/repos/Kertie2/status/issues?per_page=20&state=all&labels=incident");
                 const issues = await response.json();
                 console.log('issues', issues)
                 const monthlyIncident = devideMonthly(issues.map((issue: any) => ({
@@ -40,7 +40,7 @@ function useIncidents() {
 function devideMonthly(issues: any[]) {
 
     const incidents: MonthlyIncident[] = [];
-    var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var monthNames = ["Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre"];
     Object.values(issues.reduce((r, date) => {
         const [year, month, day] = date.created_at.substr(0, 10).split('-');
         const key = `${year}_${month}`;
